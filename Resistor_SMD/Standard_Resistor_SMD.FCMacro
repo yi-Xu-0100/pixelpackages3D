@@ -1,0 +1,34 @@
+# -*- coding: utf-8 -*-
+
+# Macro Begin: C:\Users\yiXu\Documents\FreeCAD\Macro\Standard_Resistor_SMD.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+import FreeCAD
+import ImportGui
+import subprocess
+
+# Gui.runCommand('Std_DlgMacroRecord',0)
+# Gui.Selection.addSelection('Standard_Resistor_SMD','Spreadsheet')
+dir_name = os.path.dirname(App.getDocument('Standard_Resistor_SMD').FileName)
+stepreduce_path = os.path.join(dir_name, f'..\\stepreduce.py')
+current_row=5
+while(1):
+	# Gui.Selection.clearSelection()
+	# Gui.Selection.addSelection('Standard_Resistor_SMD','Body')
+	### Begin command Std_Export
+
+	App.getDocument('Standard_Resistor_SMD').getObject('Spreadsheet').setExpression('.cells.BindHiddenRef.A3.F3', None)
+	App.getDocument('Standard_Resistor_SMD').getObject('Spreadsheet').setExpression('.cells.Bind.A3.F3', f'tuple(.cells, <<A{current_row}>>, <<F{current_row}>>)')
+	App.ActiveDocument.recompute()
+	model_name=App.getDocument('Standard_Resistor_SMD').getObject('Spreadsheet').get('model')
+	__objs__ = []
+	step_file_name = os.path.join(dir_name, f'{model_name}.step')
+	__objs__.append(FreeCAD.getDocument("Standard_Resistor_SMD").getObject("Body"))
+	ImportGui.export(__objs__, step_file_name, {'exportHidden': True, 'keepPlacement': True, 'legacy': False})
+	del __objs__
+	del model_name
+	current_row=current_row+1
+	try:
+		App.getDocument('Standard_Resistor_SMD').getObject('Spreadsheet').get(f'A{current_row}')
+	except:
+		break
+### End command Std_Export
+# Macro End: C:\Users\yiXu\Documents\FreeCAD\Macro\Standard_Resistor_SMD.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
