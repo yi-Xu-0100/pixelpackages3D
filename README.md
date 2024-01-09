@@ -47,6 +47,15 @@ SOD 类型的二极管封装库，输出步骤如下：
 1. 调用 `Diode_SOD_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
 2. 使用`python stepreduce.py ./Diode_SMD/ ./Diode_SMD/Diode_SOD_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
 
+## Package_SMD - 贴片芯片
+
+### Package_SOP_SMD.FCStd
+
+SOP 类型的封装库，输出步骤如下：
+
+1. 调用 `Package_SOP_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
+2. 使用`python stepreduce.py ./Package_SMD/ ./Package_SMD/Package_SOP_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
+
 ## 致谢
 
 - <https://gitlab.com/kicad/libraries/kicad-packages3D-source>
