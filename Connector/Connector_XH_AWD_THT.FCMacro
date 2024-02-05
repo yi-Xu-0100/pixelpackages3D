@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+
+# Macro Begin: C:\Users\yiXu\Documents\FreeCAD\Macro\Connector_XH_AWD_THT.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
+import FreeCAD
+import ImportGui
+import subprocess
+
+ducument_name = 'Connector_XH_AWD_THT'
+exportShape = 'Part'
+lastColumn = 'L'
+
+dir_name = os.path.dirname(App.getDocument(ducument_name).FileName)
+stepreduce_path = os.path.join(dir_name, f'..\\stepreduce.py')
+current_row=5
+while(1):
+
+	App.getDocument(ducument_name).getObject('Spreadsheet').setExpression(f'.cells.BindHiddenRef.A3.{lastColumn}3', None)
+	App.getDocument(ducument_name).getObject('Spreadsheet').setExpression(f'.cells.Bind.A3.{lastColumn}3', f'tuple(.cells, <<A{current_row}>>, <<{lastColumn}{current_row}>>)')
+	App.ActiveDocument.recompute()
+	model_name=App.getDocument(ducument_name).getObject('Spreadsheet').get('model')
+	__objs__ = []
+	step_file_name = os.path.join(dir_name, f'{model_name}.step')
+	__objs__.append(FreeCAD.getDocument(ducument_name).getObject(exportShape))
+	ImportGui.export(__objs__, step_file_name, {'exportHidden': True, 'keepPlacement': True, 'legacy': False})
+	del __objs__
+	del model_name
+	current_row=current_row+1
+	try:
+		App.getDocument(ducument_name).getObject('Spreadsheet').get(f'A{current_row}')
+	except:
+		break
+# Macro End: C:\Users\yiXu\Documents\FreeCAD\Macro\Connector_XH_AWD_THT.FCMacro +++++++++++++++++++++++++++++++++++++++++++++++++
