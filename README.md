@@ -70,6 +70,13 @@ SOP 类型的封装库，输出步骤如下：
 1. 调用 `Connector_XH_AWD_THT.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
 2. 使用`python stepreduce.py ./Connector/ ./Connector/Connector_XH_AWD_THT/`调用 `stepreduce.exe` 完成 step 模型压缩
 
+### Connector_FPC_SMD.FCStd
+
+SOP 类型的封装库，输出步骤如下：
+
+1. 调用 `Connector_FPC_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
+2. 使用`python stepreduce.py ./Connector/ ./Connector/Connector_FPC_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
+
 ## 致谢
 
 - <https://gitlab.com/kicad/libraries/kicad-packages3D-source>
