@@ -47,6 +47,13 @@ SOD 类型的二极管封装库，输出步骤如下：
 1. 调用 `Diode_SOD_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
 2. 使用`python stepreduce.py ./Diode_SMD/ ./Diode_SMD/Diode_SOD_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
 
+### Diode_LED_SMD.FCStd
+
+SOD 类型的二极管封装库，输出步骤如下：
+
+1. 调用 `Diode_LED_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
+2. 使用`python stepreduce.py ./Diode_SMD/ ./Diode_SMD/Diode_LED_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
+
 ## Package_SMD - 贴片芯片
 
 ### Package_SOP_SMD.FCStd
@@ -76,6 +83,15 @@ SOP 类型的封装库，输出步骤如下：
 
 1. 调用 `Connector_FPC_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
 2. 使用`python stepreduce.py ./Connector/ ./Connector/Connector_FPC_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
+
+## Crystal_SMD - 贴片晶振
+
+### Crystal_4P_SMD.FCStd
+
+SOD 类型的晶振封装库，输出步骤如下：
+
+1. 调用 `Crystal_4P_SMD.FCMacro` 宏命令完成多组模型的原始 step 文件输出。
+2. 使用`python stepreduce.py ./Crystal_SMD/ ./Crystal_SMD/Crystal_4P_SMD/`调用 `stepreduce.exe` 完成 step 模型压缩
 
 ## 致谢
 
